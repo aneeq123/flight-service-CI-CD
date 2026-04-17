@@ -61,7 +61,7 @@ class FlightControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].id").value(1))
                 .andExpect(jsonPath("$[0].flightNumber").value("FR123"))
-                .andExpect(jsonPath("$[0].airline").value("Aer Lingus"));
+                .andExpect(jsonPath("$[0].airline").value("Ryanair"));
     }
 
     @Test
