@@ -27,11 +27,8 @@ jobs:
       - name: Run Checkstyle
         run: ./mvnw -B checkstyle:check
 
-      - name: Run tests
-        run: ./mvnw -B test
-
-      - name: Package JAR
-        run: ./mvnw -B package -DskipTests
+      - name: Run tests and JaCoCo coverage check
+        run: ./mvnw -B verify
 
       - name: Upload test reports
         if: always()
@@ -39,6 +36,13 @@ jobs:
         with:
           name: test-reports
           path: target/surefire-reports/
+
+      - name: Upload JaCoCo report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
 
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
