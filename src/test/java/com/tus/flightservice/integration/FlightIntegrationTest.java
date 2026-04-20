@@ -46,6 +46,7 @@ class FlightIntegrationTest {
         savedFlight = flightRepository.save(flight);
     }
 
+ // Integration test using the real Spring context and H2 database
     @Test
     void shouldReturnFlightFromDatabase() throws Exception {
         mockMvc.perform(get("/api/flights/" + savedFlight.getId()))
